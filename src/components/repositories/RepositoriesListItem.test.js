@@ -29,14 +29,19 @@ function renderComponent() {
 test('Shows a link to the github homepage for this repository', async () => {
   renderComponent();
 
+  // OPTION 3 (the worst, hacky) to solve the act() warning
+  // await act(async () => {
+  //   await pause();
+  // });
+
   // OPTION 1 to solve the act() warning:
-  //   await screen.findByRole('img', {
-  //     name: 'Javascript',
-  //   });
+  await screen.findByRole('img', {
+    name: 'Javascript',
+  });
 });
 
 const pause = () => {
-  return Promise((resolve) => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve();
     }, 100);
